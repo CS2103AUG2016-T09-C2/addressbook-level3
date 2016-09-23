@@ -175,6 +175,41 @@ public class ParserTest {
         assertEquals(keySet, result.getKeywords());
     }
 
+    @Test 
+    public void searchCommand_invalidArgs() {
+     // no keywords
+        final String[] inputs = {
+                "search",
+                "search "
+        };
+        final String resultMessage =
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE);
+        parseAndAssertIncorrectWithMessage(resultMessage, inputs);
+    }
+    
+    @Test
+    public void searchCommand_validArgs_parsedCorrectly() {
+        final String[] keywords = { "key1", "key2", "key3" };
+        final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
+
+        final String input = "search " + String.join(" ", keySet);
+        final SearchCommand result =
+                parseAndAssertCommandType(input, SearchCommand.class);
+        assertEquals(keySet, result.getKeywords());
+    }
+    
+    @Test
+    public void searchCommand_duplicateKeys_parsedCorrectly() {
+        final String[] keywords = { "key1", "key2", "key3" };
+        final Set<String> keySet = new HashSet<>(Arrays.asList(keywords));
+
+        // duplicate every keyword
+        final String input = "search " + String.join(" ", keySet) + " " + String.join(" ", keySet);
+        final SearchCommand result =
+                parseAndAssertCommandType(input, SearchCommand.class);
+        assertEquals(keySet, result.getKeywords());
+    }
+    
     /**
      * Test add person command
      */
@@ -246,6 +281,7 @@ public class ParserTest {
         assertEquals(result.getPerson(), testPerson);
     }
 
+    
     private static Person generateTestPerson() {
         try {
             return new Person(
