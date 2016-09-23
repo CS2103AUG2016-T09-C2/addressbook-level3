@@ -55,7 +55,13 @@ public class SearchCommand extends Command{
             }
         }
         
-        
         return matchedPersons;
+    }
+    
+    /**
+     * Returns copy of keywords in this command.
+     */
+    public Set<String> getKeywords() {
+        return new HashSet<>(keywords);
     }
 }
