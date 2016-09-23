@@ -32,10 +32,8 @@ public class SearchCommand extends Command{
      */
     @Override
     public CommandResult execute() {
-        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
-       
-     
-        return null;
+        final List<ReadOnlyPerson> personsFound = getPersonsWithFieldsContainingAnyKeyword(keywords);
+        return new CommandResult(getMessageForPersonListShownSummary(personsFound), personsFound);
     }
 
     
