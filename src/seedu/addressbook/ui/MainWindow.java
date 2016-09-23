@@ -93,6 +93,7 @@ public class MainWindow {
         // if lights are on, set theme to dark and vice versa
         styleSheets.add(isLightsOn ? darkTheme : lightTheme);
         isLightsOn = !isLightsOn;
+        toggleLights.setText(isLightsOn ? "Turn Lights Off" : "Turn Lights On");
     }
     
     private void exitApp() throws Exception {
