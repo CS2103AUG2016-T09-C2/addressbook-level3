@@ -1,5 +1,8 @@
 package seedu.addressbook.data.person;
 
+import java.util.Arrays;
+import java.util.List;
+
 import seedu.addressbook.data.exception.IllegalValueException;
 
 /**
@@ -37,6 +40,13 @@ public class Email {
         return test.matches(EMAIL_VALIDATION_REGEX);
     }
 
+    /**
+     * Retrieves a listing of every word in the email, splitting by '@' and '.' regexes, in order.
+     */
+    public List<String> getWordsInEmail() {
+        return Arrays.asList(value.split("[@.]"));
+    }
+    
     @Override
     public String toString() {
         return value;
