@@ -17,6 +17,12 @@ public class SearchCommand extends Command{
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n\t"
             + "Example: " + COMMAND_WORD + " clementi blk 531";
 
+    private final Set<String> keywords;
+
+    public SearchCommand(Set<String> keywords) {
+        this.keywords = keywords;
+    }
+    
     
     /**
      * Returns all persons with fields matching the keywords specified.
@@ -26,7 +32,7 @@ public class SearchCommand extends Command{
      */
     @Override
     public CommandResult execute() {
-        
+        final List<ReadOnlyPerson> personsFound = getPersonsWithNameContainingAnyKeyword(keywords);
        
      
         return null;
@@ -53,4 +59,5 @@ public class SearchCommand extends Command{
         
         
         return matchedPersons;
+    }
 }
