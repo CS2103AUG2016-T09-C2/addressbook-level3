@@ -16,7 +16,7 @@ public class Email {
             "Person emails should be 2 alphanumeric/period strings separated by '@'";
     public static final String EMAIL_VALIDATION_REGEX = "[\\w\\.]+@[\\w\\.]+";
 
-    public final String value;
+    public String value;
     private boolean isPrivate;
 
     /**
@@ -67,5 +67,18 @@ public class Email {
 
     public boolean isPrivate() {
         return isPrivate;
+    }
+    
+    /**
+     * Replaces the original Email components with the input Email components
+     * 
+     * @throws IllegalValueException if invalid Email format is inputted
+     */
+    public void editEmail(String newEmail, boolean isPrivate) throws IllegalValueException	{
+    	if (!isValidEmail(newEmail))	{
+    		throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);
+    	}
+    	this.isPrivate = isPrivate;
+    	this.value = newEmail;
     }
 }
