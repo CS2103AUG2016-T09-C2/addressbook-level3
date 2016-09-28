@@ -15,7 +15,7 @@ public class Address {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
 
-    public final String value;
+    public String value;
     private boolean isPrivate;
 
     /**
@@ -65,4 +65,19 @@ public class Address {
     public boolean isPrivate() {
         return isPrivate;
     }
+    
+    /**
+     * Replaces the original Address components with the input Address components
+     * 
+     * @throws IllegalValueException if invalid Address format is inputted
+     */
+    public void editAddress(String newAddress, boolean isPrivate) throws IllegalValueException	{
+    	if (!isValidAddress(newAddress))	{
+    		throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
+    	}
+    	this.isPrivate = isPrivate;
+    	this.value = newAddress;
+    }
+    	
+   
 }
