@@ -46,12 +46,12 @@ public class EditCommand extends Command{
      *
      * @throws IllegalValueException if any of the raw values are invalid
      */
-    public EditCommand( int targetVisibleIndex,
-    				  String name,
-                      String phone, boolean isPhonePrivate,
-                      String email, boolean isEmailPrivate,
-                      String address, boolean isAddressPrivate,
-                      Set<String> tags) throws IllegalValueException {
+    public EditCommand(int targetVisibleIndex,
+                       String name,
+                       String phone, boolean isPhonePrivate,
+                       String email, boolean isEmailPrivate,
+                       String address, boolean isAddressPrivate,
+                       Set<String> tags) throws IllegalValueException {
     	super (targetVisibleIndex);
         final Set<Tag> tagSet = new HashSet<>();
         for (String tagName : tags) {

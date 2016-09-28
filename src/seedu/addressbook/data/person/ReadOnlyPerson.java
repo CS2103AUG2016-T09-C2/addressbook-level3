@@ -96,7 +96,7 @@ public interface ReadOnlyPerson {
      * Replaces the original address of the ReadOnlyPerson with new input address
      */
     public default void setAddress(Address newAddress) throws IllegalValueException	{
-    	Address oldAddress=this.getAddress();
+    	Address oldAddress = this.getAddress();
     	oldAddress.editAddress(newAddress.toString(), newAddress.isPrivate());
     }
     
@@ -104,7 +104,7 @@ public interface ReadOnlyPerson {
      * Replaces the original email of the ReadOnlyPerson with new input email
      */
     public default void setEmail(Email newEmail) throws IllegalValueException	{
-    	Email oldEmail=this.getEmail();
+    	Email oldEmail = this.getEmail();
     	oldEmail.editEmail(newEmail.toString(), newEmail.isPrivate());
     }
     
@@ -112,7 +112,7 @@ public interface ReadOnlyPerson {
      * Replaces the original phone number of the ReadOnlyPerson with new input phone number
      */
     public default void setPhone(Phone newPhone) throws IllegalValueException	{
-    	Phone oldPhone=this.getPhone();
+    	Phone oldPhone = this.getPhone();
     	oldPhone.editPhone(newPhone.toString(), newPhone.isPrivate());
     }
     

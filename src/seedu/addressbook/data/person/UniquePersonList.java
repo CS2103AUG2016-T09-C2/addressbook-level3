@@ -140,7 +140,7 @@ public class UniquePersonList implements Iterable<Person> {
      * @throws PersonNotFoundException if the person given by the input index cannot be found
      * @throws IllegalValueException if wrong format of the contact details are input
      */
-	public void edit(ReadOnlyPerson toEdit, Person newDetails) throws PersonNotFoundException, IllegalValueException {
+    public void edit(ReadOnlyPerson toEdit, Person newDetails) throws PersonNotFoundException, IllegalValueException {
         if (!internalList.contains(toEdit)) {
             throw new PersonNotFoundException();
         }

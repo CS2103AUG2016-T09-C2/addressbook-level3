@@ -121,7 +121,8 @@ public class AddressBook {
      * @throws PersonNotFoundException if no such Person could be found.
      * @throws IllegalValueException if wrong contact details type are entered.
      */
-    public void editPerson(ReadOnlyPerson originalDetails, Person newDetails) throws PersonNotFoundException, IllegalValueException {
+    public void editPerson(ReadOnlyPerson originalDetails, Person newDetails) 
+    		throws PersonNotFoundException, IllegalValueException {
     	syncTagsWithMasterList(newDetails);
     	allPersons.edit(originalDetails, newDetails);
     }
