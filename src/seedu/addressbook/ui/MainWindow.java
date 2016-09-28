@@ -1,10 +1,14 @@
 package seedu.addressbook.ui;
 
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import seedu.addressbook.commands.ExitCommand;
 import seedu.addressbook.logic.Logic;
 import seedu.addressbook.commands.CommandResult;
@@ -22,8 +26,16 @@ public class MainWindow {
 
     private Logic logic;
     private Stoppable mainApp;
-
+    private Stage stage;
+    
+    private boolean isLightsOn = true; // application default theme is light
+    
+    private final String darkTheme;
+    private final String lightTheme;
+    
     public MainWindow(){
+        darkTheme = this.getClass().getResource("DarkTheme.css").toString();
+        lightTheme = this.getClass().getResource("LightTheme.css").toString();
     }
 
     public void setLogic(Logic logic){
@@ -32,6 +44,10 @@ public class MainWindow {
 
     public void setMainApp(Stoppable mainApp){
         this.mainApp = mainApp;
+    }
+    
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     @FXML
@@ -57,7 +73,29 @@ public class MainWindow {
             throw new RuntimeException(e);
         }
     }
-
+    
+    @FXML
+    private MenuItem quitProgram;
+    
+    @FXML
+    void onClickQuitProgram(ActionEvent event) throws Exception {
+        logic.execute(ExitCommand.COMMAND_WORD);
+        exitApp();
+    }
+    
+    @FXML
+    private MenuItem toggleLights;
+    
+    @FXML
+    void onToggleLights(ActionEvent event) {
+        ObservableList<String> styleSheets = stage.getScene().getStylesheets();
+        styleSheets.clear();
+        // if lights are on, set theme to dark and vice versa
+        styleSheets.add(isLightsOn ? darkTheme : lightTheme);
+        isLightsOn = !isLightsOn;
+        toggleLights.setText(isLightsOn ? "Turn Lights Off" : "Turn Lights On");
+    }
+    
     private void exitApp() throws Exception {
         mainApp.stop();
     }
