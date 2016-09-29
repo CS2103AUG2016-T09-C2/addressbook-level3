@@ -88,40 +88,42 @@ public interface ReadOnlyPerson {
      * Replaces the original name of the ReadOnlyPerson with new input name
      */
     public default void setName(Name newName) {
-    	Name oldName = this.getName();
-    	oldName.setName(newName.toString());
+        Name oldName = this.getName();
+        oldName.setName(newName.toString());
     }
-    
+
     /*
-     * Replaces the original address of the ReadOnlyPerson with new input address
+     * Replaces the original address of the ReadOnlyPerson with new input
+     * address
      */
-    public default void setAddress(Address newAddress) throws IllegalValueException	{
-    	Address oldAddress = this.getAddress();
-    	oldAddress.editAddress(newAddress.toString(), newAddress.isPrivate());
+    public default void setAddress(Address newAddress) throws IllegalValueException {
+        Address oldAddress = this.getAddress();
+        oldAddress.editAddress(newAddress.toString(), newAddress.isPrivate());
     }
-    
+
     /*
      * Replaces the original email of the ReadOnlyPerson with new input email
      */
-    public default void setEmail(Email newEmail) throws IllegalValueException	{
-    	Email oldEmail = this.getEmail();
-    	oldEmail.editEmail(newEmail.toString(), newEmail.isPrivate());
+    public default void setEmail(Email newEmail) throws IllegalValueException {
+        Email oldEmail = this.getEmail();
+        oldEmail.editEmail(newEmail.toString(), newEmail.isPrivate());
     }
-    
+
     /*
-     * Replaces the original phone number of the ReadOnlyPerson with new input phone number
+     * Replaces the original phone number of the ReadOnlyPerson with new input
+     * phone number
      */
-    public default void setPhone(Phone newPhone) throws IllegalValueException	{
-    	Phone oldPhone = this.getPhone();
-    	oldPhone.editPhone(newPhone.toString(), newPhone.isPrivate());
+    public default void setPhone(Phone newPhone) throws IllegalValueException {
+        Phone oldPhone = this.getPhone();
+        oldPhone.editPhone(newPhone.toString(), newPhone.isPrivate());
     }
-    
+
     /*
      * Replaces the original tags of the ReadOnlyPerson with new input tags
      */
-    public default void setTags(UniqueTagList newTags)	{
-    	UniqueTagList oldTags = this.getTags();
-    	oldTags = newTags;
+    public default void setTags(UniqueTagList newTags) {
+        UniqueTagList oldTags = this.getTags();
+        oldTags = newTags;
     }
-    
+
 }

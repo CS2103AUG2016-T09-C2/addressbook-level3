@@ -65,22 +65,22 @@ public class EditCommand extends Command{
                 new UniqueTagList(tagSet)
         );
     }
-	
-	@Override
-	public CommandResult execute() {
-		try {
+
+    @Override
+    public CommandResult execute() {
+        try {
             final ReadOnlyPerson target = getTargetPerson();
             addressBook.editPerson(target, toEdit);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toEdit));
-		} catch (IndexOutOfBoundsException ie) {
-			return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        } catch (IndexOutOfBoundsException ie) {
+            return new CommandResult(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         } catch (PersonNotFoundException pnfe) {
             return new CommandResult(Messages.MESSAGE_PERSON_NOT_IN_ADDRESSBOOK);
         } catch (UniquePersonList.DuplicatePersonException dpe) {
             return new CommandResult(MESSAGE_DUPLICATE_PERSON);
         } catch (IllegalValueException e) {
-			return new CommandResult(MESSAGE_INVALID_CONTACT_DETAILS_FORMAT);
-		} 
-	} 
+            return new CommandResult(MESSAGE_INVALID_CONTACT_DETAILS_FORMAT);
+        }
+    }
 
 }

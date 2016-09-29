@@ -173,47 +173,42 @@ public class Parser {
      * @param personData person contact details string
      * @return the prepared command
      */
-    private Command prepareEdit(String args){
-    	final Matcher indexPersonMatcher = INDEX_PERSON_DATA_FORMAT.matcher(args.trim());
-    	
-    	// Validate args string format
-    	if (!indexPersonMatcher.matches())	
-    		return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
-    	
-    	final String personData = indexPersonMatcher.group("personData");
-		final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(personData.trim());
-		
-		// Validate personData string format
-    	if (!matcher.matches())	{
-    		return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
-    	}
-    	
-    	try {
-    		final int targetIndex = parseArgsAsDisplayedIndex(indexPersonMatcher.group("index"));
-    			return new EditCommand(
-    				targetIndex,
-            		
-    				matcher.group("name"),
+    private Command prepareEdit(String args) {
+        final Matcher indexPersonMatcher = INDEX_PERSON_DATA_FORMAT.matcher(args.trim());
 
-    				matcher.group("phone"),
-    				isPrivatePrefixPresent(matcher.group("isPhonePrivate")),
+        // Validate args string format
+        if (!indexPersonMatcher.matches())
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
 
-    				matcher.group("email"),
-    				isPrivatePrefixPresent(matcher.group("isEmailPrivate")),
+        final String personData = indexPersonMatcher.group("personData");
+        final Matcher matcher = PERSON_DATA_ARGS_FORMAT.matcher(personData.trim());
 
-    				matcher.group("address"),
-    				isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+        // Validate personData string format
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        }
 
-    				getTagsFromArgs(matcher.group("tagArguments"))
-    			);
-    		} catch (IllegalValueException ive) {
-    			return new IncorrectCommand(ive.getMessage());
-    		} catch (NumberFormatException e) {
-    			return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
-    		} catch (ParseException e)	{
-    			return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
-    		}
-    	}
+        try {
+            final int targetIndex = parseArgsAsDisplayedIndex(indexPersonMatcher.group("index"));
+            return new EditCommand(targetIndex,
+
+                    matcher.group("name"),
+
+                    matcher.group("phone"), isPrivatePrefixPresent(matcher.group("isPhonePrivate")),
+
+                    matcher.group("email"), isPrivatePrefixPresent(matcher.group("isEmailPrivate")),
+
+                    matcher.group("address"), isPrivatePrefixPresent(matcher.group("isAddressPrivate")),
+
+                    getTagsFromArgs(matcher.group("tagArguments")));
+        } catch (IllegalValueException ive) {
+            return new IncorrectCommand(ive.getMessage());
+        } catch (NumberFormatException e) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        } catch (ParseException e) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
+        }
+    }
     
 
     /**

@@ -75,10 +75,10 @@ public class Email {
      * @throws IllegalValueException if invalid Email format is inputted
      */
     public void editEmail(String newEmail, boolean isPrivate) throws IllegalValueException {
-    	if (!isValidEmail(newEmail)) {
-    		throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);
-    	}
-    	this.isPrivate = isPrivate;
-    	this.value = newEmail;
+        if (!isValidEmail(newEmail)) {
+            throw new IllegalValueException(MESSAGE_EMAIL_CONSTRAINTS);
+        }
+        this.isPrivate = isPrivate;
+        this.value = newEmail;
     }
 }

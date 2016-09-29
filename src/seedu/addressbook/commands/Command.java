@@ -40,7 +40,7 @@ public abstract class Command {
     /**
      * Executes the command and returns the result.
      */
-    public abstract CommandResult execute() throws IllegalValueException;
+    public abstract CommandResult execute();
 
     /**
      * Supplies the data the command will operate on.

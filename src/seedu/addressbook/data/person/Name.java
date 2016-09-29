@@ -64,8 +64,8 @@ public class Name {
     /**
      * Replaces the original name with the input name
      */
-    public void setName(String newName)	{
-    	fullName = newName;
+    public void setName(String newName) {
+        fullName = newName;
     }
 
 }

@@ -147,11 +147,11 @@ public class UniquePersonList implements Iterable<Person> {
         if (internalList.contains(newDetails)) {
             throw new DuplicatePersonException();
         }
-        	toEdit.setName(newDetails.getName());
-        	toEdit.setAddress(newDetails.getAddress());
-        	toEdit.setEmail(newDetails.getEmail());
-        	toEdit.setPhone(newDetails.getPhone());
-        	toEdit.setTags(newDetails.getTags());
-	}
+        toEdit.setName(newDetails.getName());
+        toEdit.setAddress(newDetails.getAddress());
+        toEdit.setEmail(newDetails.getEmail());
+        toEdit.setPhone(newDetails.getPhone());
+        toEdit.setTags(newDetails.getTags());
+    }
 
 }

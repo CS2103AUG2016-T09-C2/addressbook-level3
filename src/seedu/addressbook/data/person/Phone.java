@@ -63,10 +63,10 @@ public class Phone {
      * @throws IllegalValueException if invalid Phone format is inputted
      */
     public void editPhone(String newPhone, boolean isPrivate) throws IllegalValueException {
-    	if (!isValidPhone(newPhone)) {
-    		throw new IllegalValueException(MESSAGE_PHONE_CONSTRAINTS);
-    	}
-    	this.isPrivate = isPrivate;
-    	this.value = newPhone.trim();
+        if (!isValidPhone(newPhone)) {
+            throw new IllegalValueException(MESSAGE_PHONE_CONSTRAINTS);
+        }
+        this.isPrivate = isPrivate;
+        this.value = newPhone.trim();
     }
 }

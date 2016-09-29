@@ -71,12 +71,12 @@ public class Address {
      * 
      * @throws IllegalValueException if invalid Address format is inputted
      */
-    public void editAddress(String newAddress, boolean isPrivate) throws IllegalValueException	{
-    	if (!isValidAddress(newAddress)) {
-    		throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
-    	}
-    	this.isPrivate = isPrivate;
-    	this.value = newAddress;
+    public void editAddress(String newAddress, boolean isPrivate) throws IllegalValueException {
+        if (!isValidAddress(newAddress)) {
+            throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
+        }
+        this.isPrivate = isPrivate;
+        this.value = newAddress;
     }
     	
    
