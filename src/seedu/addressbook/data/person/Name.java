@@ -15,7 +15,7 @@ public class Name {
     public static final String MESSAGE_NAME_CONSTRAINTS = "Person names should be spaces or alphanumeric characters";
     public static final String NAME_VALIDATION_REGEX = "[\\p{Alnum} ]+";
 
-    public final String fullName;
+    public String fullName;
 
     /**
      * Validates given name.
@@ -59,6 +59,13 @@ public class Name {
     @Override
     public int hashCode() {
         return fullName.hashCode();
+    }
+    
+    /**
+     * Replaces the original name with the input name
+     */
+    public void setName(String newName) {
+        fullName = newName;
     }
 
 }
