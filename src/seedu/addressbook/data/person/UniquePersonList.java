@@ -73,6 +73,7 @@ public class UniquePersonList implements Iterable<Person> {
     public List<ReadOnlyPerson> immutableListView() {
         return Collections.unmodifiableList(internalList);
     }
+    
 
 
     /**
@@ -130,5 +131,11 @@ public class UniquePersonList implements Iterable<Person> {
     public int hashCode() {
         return internalList.hashCode();
     }
+
+	public List<Person> getSortedList() {
+		List<Person> sortedList = new ArrayList<Person>(internalList);
+		sortedList.sort((Person p1, Person p2) -> p1.getName().compareTo(p2.getName()));
+		return sortedList;
+	}
 
 }

@@ -137,6 +137,10 @@ public class AddressBook {
     public UniquePersonList getAllPersons() {
         return new UniquePersonList(allPersons);
     }
+    
+    public UniquePersonList getAllPersonsSorted() throws DuplicatePersonException {
+    	return new UniquePersonList(allPersons.getSortedList());
+    }
 
     /**
      * Defensively copied UniqueTagList of all tags in the address book at the time of the call.
